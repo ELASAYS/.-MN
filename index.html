@@ -1381,5 +1381,16 @@ const App = (() => {
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', App.init);
 else App.init();
 </script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('sw.js').then(function(registration) {
+        console.log('الـ ServiceWorker اشتغل وزي الفل ومجاله: ', registration.scope);
+      }, function(err) {
+        console.log('في مشكلة في تشغيل الـ ServiceWorker: ', err);
+      });
+    });
+  }
+</script>
 </body>
 </html>
